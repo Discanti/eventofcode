@@ -74,25 +74,33 @@ public class Calcul {
 		}
 	}
 
-	protected void lettreCachee(StringBuilder ligneBuilder) {
-		this.ligneBuilder = ligneBuilder;
+	protected void lettreCachee(String ligne) {
+		this.ligne = ligne;
+		String[] chiffreLettres = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+
 		// variable pour trouver le plus petit
 		int w_i = 999;
 		String chiffrePetit;
 		// variable pour trouver le plus grand
-		int w_j = 0;
+		int w_j = -1;
 		String chiffreGrand;
-		for (ChiffreLettre chiffreLettre : ChiffreLettre.values()) {
-			if (ligneBuilder.indexOf(chiffreLettre.toString()) < w_i) {
-				w_i = ligneBuilder.indexOf(chiffreLettre.toString());
-				chiffrePetit = ChiffreLettre.toString();
+
+		for (String chiffreLettre : chiffreLettres) {
+			if (ligne.indexOf(chiffreLettre) < w_i) {
+				w_i = ligne.indexOf(chiffreLettre);
+				chiffrePetit = chiffreLettre;
 			}
 		}
 
-		for (ChiffreLettre chiffreLettre : ChiffreLettre.values()) {
-			if (ligneBuilder.lastIndexOf(chiffreLettre.toString()) > w_j) {
-				w_j = ligneBuilder.lastIndexOf(chiffreLettre.toString());
+		for (String chiffreLettre : chiffreLettres) {
+			if (ligne.lastIndexOf(chiffreLettre) > w_j) {
+				w_j = ligne.lastIndexOf(chiffreLettre);
+				chiffrePetit = chiffreLettre;
 			}
+		}
+
+		if (w_i != 999) {
+			;
 		}
 
 	}
